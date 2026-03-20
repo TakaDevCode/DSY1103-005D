@@ -7,7 +7,7 @@ import com.duoc.DSY1103.Model.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/client")
+@RequestMapping("/api/clients")
 public class ClientController {
 
     private ClientService clientService = new ClientService();
