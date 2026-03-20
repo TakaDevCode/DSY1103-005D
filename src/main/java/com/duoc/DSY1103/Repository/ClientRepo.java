@@ -34,14 +34,15 @@ public class ClientRepo {
         return null;
     }
 
-    public void actualizar(Cliente updatedCliente) {
+    public Cliente actualizar(Cliente updatedCliente) {
         for (Cliente temp : clientes) {
             if (temp.getId() == updatedCliente.getId()) {
                 temp.setNombre(updatedCliente.getNombre());
                 temp.setEmail(updatedCliente.getEmail());
-                break;
+                return temp;
             }
         }
+        return null;
     }
 
     public void eliminar(int id) {
