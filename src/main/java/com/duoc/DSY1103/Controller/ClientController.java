@@ -15,7 +15,7 @@ public class ClientController {
     private ClientService clientService = new ClientService();
 
     @GetMapping("")
-    public List<Cliente> getAllClients(){
+    public List<Cliente> getAllClients() {
         return clientService.getAllClientes();
     }
 
@@ -30,37 +30,37 @@ public class ClientController {
 */
 
     @GetMapping("/{id}")
-    public ResponseEntity<Cliente> getClientById(@PathVariable int id){
+    public ResponseEntity<Cliente> getClientById(@PathVariable int id) {
         Cliente cliente = clientService.obtenerClienteSegunID(id);
-        if(cliente!=null){
+        if (cliente != null) {
             return ResponseEntity.ok().body(cliente);
-        }else{
+        } else {
             return ResponseEntity.notFound().build();
         }
     }
 
     @PostMapping("/")
-    public void agregarCliente(@RequestBody Cliente cliente){
+    public void agregarCliente(@RequestBody Cliente cliente) {
         clientService.agregarCliente(cliente);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> eliminarCliente(@PathVariable int id){
-        boolean res =  clientService.eliminarCliente(id);
-        if(res){
+    public ResponseEntity<String> eliminarCliente(@PathVariable int id) {
+        boolean res = clientService.eliminarCliente(id);
+        if (res) {
             return ResponseEntity.ok().body("Eliminado correctamente");
-        }else{
+        } else {
             return ResponseEntity.notFound().build();
         }
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Cliente> actualizarCliente(@PathVariable int id, @RequestBody Cliente nuevo){
+    public ResponseEntity<Cliente> actualizarCliente(@PathVariable int id, @RequestBody Cliente nuevo) {
         Cliente cliente = clientService.obtenerClienteSegunID(id);
-        if(cliente!=null){
+        if (cliente != null) {
             clientService.actualizarCLiente(nuevo);
             return ResponseEntity.ok().body(cliente);
-        }else{
+        } else {
             return ResponseEntity.notFound().build();
         }
     }
